@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ProductCard from "./components/ProductCard";
+import style from "./style.module.css";
 
 function App() {
   const [produtos, setProdutos] = useState([]);
@@ -22,19 +24,11 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={style.container}>
       <h1>Produtos</h1>
 
       {produtos.map((produto) => (
-        <div key={produto.id}>
-          {produto.imagem && (
-            <img src={produto.imagem} alt={produto.nome} width="200" />
-          )}
-
-          <h2>{produto.nome}</h2>
-
-          <a href={produto.url}>Ver produto</a>
-        </div>
+        <ProductCard key={produto.id} produto={produto} />
       ))}
     </div>
   );
