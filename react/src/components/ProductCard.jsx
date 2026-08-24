@@ -20,5 +20,4 @@ function ProductCard({ produto }) {
     </a>
   );
 }
-
 export default ProductCard;

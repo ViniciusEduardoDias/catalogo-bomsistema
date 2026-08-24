@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
 .catalogo {
   width: 100%;
   max-width: 1400px;
@@ -8,13 +12,15 @@
 .title {
   margin: 0 0 32px;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 42px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 42px !important;
   font-weight: 700;
   line-height: 1.1;
 
   color: #444;
 }
+
+/* LAYOUT */
 
 .layout {
   display: grid;
@@ -28,10 +34,10 @@
 .sidebar {
   position: sticky;
   top: 30px;
-
+  height: 100%;
   padding: 24px;
 
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
 }
@@ -39,11 +45,11 @@
 .sidebar h2 {
   margin: 0;
 
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
 
-  color: #333;
+  color: #333 !important;
 }
 
 /* PRODUTOS */
@@ -52,10 +58,77 @@
   min-width: 0;
 }
 
+/* GRID */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: 20px;
+}
+
+/* PAGINAÇÃO */
+
+/* PAGINAÇÃO */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.pagination button {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none !important;
+  background: transparent !important;
+
+  color: #555 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+/* Hover */
+.pagination button:hover:not(:disabled) {
+  border: none !important;
+  background: transparent !important;
+  color: #009fe3 !important;
+}
+
+/* Página atual */
+.pagination .activePage {
+  border: none !important;
+  background: transparent !important;
+  color: #009fe3 !important;
+}
+
+/* Página atual no hover */
+.pagination .activePage:hover {
+  border: none !important;
+  background: transparent !important;
+  color: #009fe3 !important;
+}
+
+/* Desabilitado */
+.pagination button:disabled {
+  border: none !important;
+  background: transparent !important;
+  color: #bbb !important;
+  cursor: default;
 }
 
 /* TABLET */
@@ -83,7 +156,7 @@
   }
 
   .title {
-    font-size: 32px;
+    font-size: 32px !important;
     margin-bottom: 24px;
   }
 
