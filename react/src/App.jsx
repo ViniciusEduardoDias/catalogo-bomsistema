@@ -24,12 +24,23 @@ function App() {
   }
 
   return (
-    <div className={style.container}>
-      <h1>Produtos</h1>
+    <div className={style.catalogo}>
+      <h1 className={style.title}>Produtos</h1>
+      <div className={style.layout}>
+        {/* Sidebar - vamos desenvolver depois */}
+        <aside className={style.sidebar}>
+          <h2>Filtrar produtos</h2>
+        </aside>
 
-      {produtos.map((produto) => (
-        <ProductCard key={produto.id} produto={produto} />
-      ))}
+        {/* Produtos */}
+        <section className={style.products}>
+          <div className={style.grid}>
+            {produtos.map((produto) => (
+              <ProductCard key={produto.id} produto={produto} />
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
