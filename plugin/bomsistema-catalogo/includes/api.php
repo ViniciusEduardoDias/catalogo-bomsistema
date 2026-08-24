@@ -35,15 +35,16 @@ function bomsistema_obter_produtos()
 
     foreach ($produtos as $produto) {
         $resultado[] = [
-            'id'        => $produto->get_id(),
-            'nome'      => $produto->get_name(),
-            'slug'      => $produto->get_slug(),
-            'url'       => $produto->get_permalink(),
-            'imagem'    => wp_get_attachment_image_url(
-                $produto->get_image_id(),
-                'medium_large'
-            ),
-        ];
+        'id'        => $produto->get_id(),
+        'nome'      => $produto->get_name(),
+        'slug'      => $produto->get_slug(),
+        'url'       => $produto->get_permalink(),
+        'imagem'    => wp_get_attachment_image_url(
+            $produto->get_image_id(),
+        'medium_large'
+    ),
+        'destaque'  => $produto->is_featured(),
+];
     }
 
     return rest_ensure_response($resultado);
