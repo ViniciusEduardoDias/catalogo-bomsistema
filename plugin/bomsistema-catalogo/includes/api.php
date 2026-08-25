@@ -46,7 +46,6 @@ function bomsistema_obter_produtos()
             $produto->get_id(),
             'product_cat'
         );
-
         $categorias = [];
 
         if (!is_wp_error($categorias_produto)) {

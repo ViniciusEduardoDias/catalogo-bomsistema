@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import style from "./style.module.css";
 import Sidebar from "./components/Sidebar";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [categoriasSelecionadas, setCategoriasSelecionadas] = useState([]);
+  const [busca, setBusca] = useState("");
 
   const produtosPorPagina = 12;
 
@@ -42,6 +44,14 @@ function App() {
 
   let produtosFiltrados = produtos;
 
+  // Nenhum filtro selecionado:
+  // mostrar somente produtos em destaque
+  if (categoriasSelecionadas.length === 0) {
+    produtosFiltrados = produtos.filter((produto) => produto.destaque === true);
+  }
+
+  // Categorias selecionadas:
+  // mostrar produtos dessas categorias
   if (categoriasSelecionadas.length > 0) {
     produtosFiltrados = produtos.filter((produto) =>
       produto.categorias?.some((categoria) =>
@@ -60,7 +70,7 @@ function App() {
 
   return (
     <div className={style.catalogo}>
-      <h1 className={style.title}>Produtos</h1>
+      <SearchBar />
       <div>
         <div className={style.layout}>
           <Sidebar
