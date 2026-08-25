@@ -1,49 +1,27 @@
 import styles from "./Sidebar.module.css";
-
-const categorias = [
-  {
-    nome: "Componentes Sem Categoria",
-    slug: "componentes-pulverizacao",
-  },
-  {
-    nome: "Abraçadeiras Clampfix",
-    slug: "abracadeiras",
-  },
-  {
-    nome: "Agricultura de Precisão",
-    slug: "agricultura-precisao",
-  },
-  {
-    nome: "Controladores de Vazão",
-    slug: "controladores",
-  },
-  {
-    nome: "Monitores",
-    slug: "monitores",
-  },
-  {
-    nome: "Bombas",
-    slug: "bombas",
-  },
-  {
-    nome: "Bombas Centrífugas",
-    slug: "bombas-centrifugas",
-  },
-  {
-    nome: "Conexões QuickFit",
-    slug: "quickfit",
-  },
-  {
-    nome: "Porta-Bicos Proeco",
-    slug: "portabicos",
-  },
-  {
-    nome: "Reparos Bombas",
-    slug: "reparo",
-  },
-];
+import { useEffect, useState } from "react";
 
 function Sidebar({ categoriasSelecionadas, onAlterarCategoria }) {
+  const [categorias, setCategorias] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    fetch("/wp-json/bomsistema/v1/categorias")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategorias(
+          data.filter(
+            (categoria) => categoria.slug !== "componentes-pulverizacao",
+          ),
+        );
+        setCarregando(false);
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar categorias:", error);
+        setCarregando(false);
+      });
+  }, []);
+
   return (
     <aside className={styles.sidebar}>
       <h2>Filtrar produtos</h2>

@@ -40,13 +40,23 @@ function App() {
     return <p>Carregando produtos...</p>;
   }
 
+  let produtosFiltrados = produtos;
+
+  if (categoriasSelecionadas.length > 0) {
+    produtosFiltrados = produtos.filter((produto) =>
+      produto.categorias?.some((categoria) =>
+        categoriasSelecionadas.includes(categoria.slug),
+      ),
+    );
+  }
+
   // PAGINAÇÃO
   const indiceInicial = (paginaAtual - 1) * produtosPorPagina;
   const indiceFinal = indiceInicial + produtosPorPagina;
 
-  const produtosDaPagina = produtos.slice(indiceInicial, indiceFinal);
+  const produtosDaPagina = produtosFiltrados.slice(indiceInicial, indiceFinal);
 
-  const totalPaginas = Math.ceil(produtos.length / produtosPorPagina);
+  const totalPaginas = Math.ceil(produtosFiltrados.length / produtosPorPagina);
 
   return (
     <div className={style.catalogo}>
