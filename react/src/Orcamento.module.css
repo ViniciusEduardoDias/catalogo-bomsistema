@@ -1,0 +1,700 @@
+.orcamento {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 15px 35px;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #111;
+}
+
+/* =========================================
+   TEXTO SUPERIOR
+========================================= */
+
+.intro {
+  margin: 0 0 38px !important;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+
+  color: #111 !important;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(320px, 1fr);
+
+  gap: 25px;
+
+  align-items: start;
+}
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+.tituloSecao {
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+
+  color: #111 !important;
+}
+
+/* =========================================
+   LISTA
+========================================= */
+
+.listaProdutos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* =========================================
+   CARD DO PRODUTO
+========================================= */
+
+.produto {
+  position: relative;
+
+  display: flex;
+
+  min-height: 145px;
+
+  padding: 16px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+
+  background: #fff;
+}
+
+/* =========================================
+   IMAGEM
+========================================= */
+
+.produtoImagem {
+  flex: 0 0 113px;
+
+  width: 113px;
+  height: 113px;
+
+  overflow: hidden;
+
+  background: #eeeeee;
+}
+
+.produtoImagem img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.semImagem {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #eeeeee;
+
+  color: #999;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   INFORMAÇÕES DO PRODUTO
+========================================= */
+
+.produtoInformacoes {
+  min-width: 0;
+
+  padding-left: 9px;
+  padding-right: 30px;
+}
+
+.produtoTitulo {
+  margin: 0 0 1px !important;
+  padding: 0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+
+  color: #111 !important;
+}
+
+.codigo {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+
+  color: #111 !important;
+}
+
+.descricao {
+  margin: 1px 0 0 !important;
+  padding: 0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+
+  color: #111 !important;
+}
+
+/* =========================================
+   QUANTIDADE
+========================================= */
+
+.quantidade {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 46px;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+
+  color: #111;
+}
+
+.quantidade > span:first-child {
+  margin-right: 1px;
+
+  font-size: 12px !important;
+}
+
+/* =========================================
+   BOTÃO + / -
+   RESET TOTAL DO WORDPRESS
+========================================= */
+
+.botaoQuantidade {
+  all: unset !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  width: 16px !important;
+  min-width: 16px !important;
+  max-width: 16px !important;
+
+  height: 16px !important;
+  min-height: 16px !important;
+  max-height: 16px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid #aaa !important;
+  border-radius: 50% !important;
+
+  background: #fff !important;
+
+  color: #333 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 14px !important;
+
+  text-align: center !important;
+
+  cursor: pointer !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.botaoQuantidade:hover {
+  border-color: #0098d0 !important;
+
+  background: #fff !important;
+
+  color: #0098d0 !important;
+}
+
+.botaoQuantidade:focus,
+.botaoQuantidade:active {
+  outline: none !important;
+
+  border-color: #0098d0 !important;
+
+  background: #fff !important;
+
+  color: #0098d0 !important;
+
+  box-shadow: none !important;
+}
+
+/* NÚMERO */
+
+.numeroQuantidade {
+  display: inline-block;
+
+  min-width: 12px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+/* =========================================
+   BOTÃO LIXEIRA
+========================================= */
+
+.botaoRemover {
+  all: unset !important;
+
+  position: absolute !important;
+
+  top: 13px !important;
+  right: 16px !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  width: 20px !important;
+  min-width: 20px !important;
+
+  height: 20px !important;
+  min-height: 20px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
+
+  color: #555 !important;
+
+  cursor: pointer !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.botaoRemover:hover {
+  background: transparent !important;
+
+  color: #e00000 !important;
+}
+
+.botaoRemover:focus,
+.botaoRemover:active {
+  outline: none !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.formularioSection {
+  min-width: 0;
+}
+
+.formulario {
+  margin: 0 !important;
+  padding: 16px !important;
+
+  box-sizing: border-box;
+
+  border-radius: 6px;
+
+  background: #f1f1f1;
+}
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+  margin: 0 0 17px !important;
+  padding: 0 !important;
+}
+
+.campo label {
+  display: block !important;
+
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
+
+  color: #111 !important;
+}
+
+.campo input,
+.campo select {
+  all: unset !important;
+
+  box-sizing: border-box !important;
+
+  display: block !important;
+
+  width: 100% !important;
+
+  height: 36px !important;
+  min-height: 36px !important;
+
+  margin: 0 !important;
+  padding: 0 14px !important;
+
+  border: 1px solid #cfcfcf !important;
+  border-radius: 3px !important;
+
+  background: #fff !important;
+
+  color: #222 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 36px !important;
+
+  box-shadow: none !important;
+
+  outline: none !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.campo input::placeholder {
+  color: #666 !important;
+
+  opacity: 1 !important;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #0098d0 !important;
+
+  box-shadow: 0 0 0 1px rgba(0, 152, 208, 0.15) !important;
+}
+
+/* =========================================
+   BOTÃO ENVIAR
+========================================= */
+
+.botaoEnviar {
+  all: unset !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+
+  margin: 5px 0 0 !important;
+  padding: 0 15px !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 4px !important;
+
+  border: 1px solid #0098d0 !important;
+  border-radius: 3px !important;
+
+  background: #0098d0 !important;
+
+  color: #fff !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 40px !important;
+
+  text-align: center !important;
+
+  cursor: pointer !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.botaoEnviar:hover {
+  background: #0087ba !important;
+
+  border-color: #0087ba !important;
+
+  color: #fff !important;
+}
+
+.botaoEnviar:focus,
+.botaoEnviar:active {
+  outline: none !important;
+
+  background: #0098d0 !important;
+
+  color: #fff !important;
+
+  box-shadow: none !important;
+}
+
+.botaoEnviar span {
+  display: inline-block;
+
+  margin: -2px 0 0;
+
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+}
+
+/* =========================================
+   ESCOLHER MAIS PRODUTOS
+========================================= */
+
+.botaoEscolher {
+  all: unset !important;
+
+  box-sizing: border-box !important;
+
+  display: flex !important;
+
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+
+  margin: 10px 0 0 !important;
+  padding: 0 15px !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 2px solid #0098d0 !important;
+  border-radius: 3px !important;
+
+  background: #fff !important;
+
+  color: #0098d0 !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 38px !important;
+
+  text-align: center !important;
+
+  cursor: pointer !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.botaoEscolher:hover {
+  background: #fff !important;
+
+  border-color: #0098d0 !important;
+
+  color: #0098d0 !important;
+}
+
+.botaoEscolher:focus,
+.botaoEscolher:active {
+  outline: none !important;
+
+  background: #fff !important;
+
+  color: #0098d0 !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================
+   INFORMAÇÕES SEGURAS
+========================================= */
+
+.informacoesSeguras {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  margin-top: 9px;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 700 !important;
+
+  color: #666 !important;
+}
+
+/* =========================================
+   CARRINHO VAZIO
+========================================= */
+
+.carrinhoVazio {
+  padding: 35px 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+  text-align: center;
+}
+
+.carrinhoVazio p {
+  margin: 0 0 20px !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+
+  color: #555 !important;
+}
+
+.botaoProdutos {
+  all: unset !important;
+
+  box-sizing: border-box !important;
+
+  display: inline-flex !important;
+
+  height: 38px !important;
+
+  margin: 0 !important;
+  padding: 0 22px !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid #0098d0 !important;
+  border-radius: 3px !important;
+
+  background: #0098d0 !important;
+
+  color: #fff !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  cursor: pointer !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 850px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .orcamento {
+    padding: 20px 12px 30px;
+  }
+
+  .intro {
+    margin-bottom: 28px !important;
+
+    font-size: 14px !important;
+  }
+
+  .tituloSecao {
+    font-size: 19px !important;
+  }
+
+  .produto {
+    min-height: 120px;
+
+    padding: 12px;
+  }
+
+  .produtoImagem {
+    flex: 0 0 85px;
+    border-radius: 0;
+
+    width: 85px;
+    height: 85px;
+  }
+
+  .produtoInformacoes {
+    padding-left: 9px;
+    padding-right: 25px;
+  }
+
+  .produtoTitulo {
+    font-size: 14px !important;
+  }
+
+  .codigo,
+  .descricao {
+    font-size: 11px !important;
+  }
+
+  .quantidade {
+    margin-top: 20px;
+  }
+}
