@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Orcamento from "./Orcamento";
 
-const root = document.getElementById("bomsistema-catalogo");
+const pagina = document.getElementById("root").dataset.pagina;
 
-if (root) {
-  ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  );
-}
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    {pagina === "orcamento" ? <Orcamento /> : <App />}
+  </React.StrictMode>,
+);

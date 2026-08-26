@@ -44,20 +44,40 @@ function App() {
 
   let produtosFiltrados = produtos;
 
-  // Nenhum filtro selecionado:
-  // mostrar somente produtos em destaque
-  if (categoriasSelecionadas.length === 0) {
-    produtosFiltrados = produtos.filter((produto) => produto.destaque === true);
+  // Se existe busca, filtra pelo nome
+  if (busca.trim() !== "") {
+    const termo = busca.toLowerCase().trim();
+
+    produtosFiltrados = produtosFiltrados.filter((produto) =>
+      produto.nome.toLowerCase().includes(termo),
+    );
   }
 
-  // Categorias selecionadas:
-  // mostrar produtos dessas categorias
+  // Se existem categorias selecionadas, filtra por categoria
   if (categoriasSelecionadas.length > 0) {
-    produtosFiltrados = produtos.filter((produto) =>
+    produtosFiltrados = produtosFiltrados.filter((produto) =>
       produto.categorias?.some((categoria) =>
         categoriasSelecionadas.includes(categoria.slug),
       ),
     );
+  }
+
+  // Se não existe busca nem categoria,
+  // mostra somente os produtos em destaque
+  if (busca.trim() === "" && categoriasSelecionadas.length === 0) {
+    produtosFiltrados = produtos.filter((produto) => produto.destaque === true);
+
+    produtosFiltrados.sort((a, b) => {
+      const aBomba = a.categorias?.some(
+        (categoria) => categoria.slug === "bombas",
+      );
+
+      const bBomba = b.categorias?.some(
+        (categoria) => categoria.slug === "bombas",
+      );
+
+      return Number(bBomba) - Number(aBomba);
+    });
   }
 
   // PAGINAÇÃO
@@ -70,7 +90,17 @@ function App() {
 
   return (
     <div className={style.catalogo}>
-      <SearchBar />
+      <SearchBar
+        valor={busca}
+        onAlterar={(valor) => {
+          setBusca(valor);
+          setPaginaAtual(1);
+
+          if (valor.trim() !== "") {
+            setCategoriasSelecionadas([]);
+          }
+        }}
+      />
       <div>
         <div className={style.layout}>
           <Sidebar
