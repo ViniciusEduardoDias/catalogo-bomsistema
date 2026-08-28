@@ -9,8 +9,11 @@ export default defineConfig({
 
   build: {
     outDir: resolve(__dirname, "../plugin/bomsistema-catalogo/build"),
+
     assetsDir: "assets",
+
     manifest: true,
+
     emptyOutDir: true,
   },
 });
