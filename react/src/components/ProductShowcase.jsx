@@ -10,7 +10,6 @@ function ProductShowcase({ categoria, modo = "grid" }) {
   const [erro, setErro] = useState(false);
 
   const carouselRef = useRef(null);
-
   useEffect(() => {
     setCarregando(true);
     setErro(false);
@@ -28,16 +27,27 @@ function ProductShowcase({ categoria, modo = "grid" }) {
 
         let produtosFiltrados;
 
-        if (categoria) {
+        // Converte:
+        // "bombas" → ["bombas"]
+        // "bombas,centrifugas" → ["bombas", "centrifugas"]
+        const categoriasSelecionadas = categoria
+          ? categoria.split(",").map((item) => item.trim())
+          : [];
+        console.log("CATEGORIAS RECEBIDAS:", categoriasSelecionadas);
+
+        if (categoriasSelecionadas.length > 0) {
           produtosFiltrados = data.filter((produto) =>
-            produto.categorias?.some(
-              (categoriaProduto) => categoriaProduto.slug === categoria,
+            produto.categorias?.some((categoriaProduto) =>
+              categoriasSelecionadas.includes(categoriaProduto.slug),
             ),
           );
         } else {
+          // Sem categoria = produtos em destaque
           produtosFiltrados = data.filter(
             (produto) => produto.destaque === true,
           );
+
+          // Bombas em destaque sempre aparecem primeiro
           produtosFiltrados.sort((a, b) => {
             const aBomba = a.categorias?.some(
               (categoriaProduto) => categoriaProduto.slug === "bombas",
@@ -54,7 +64,7 @@ function ProductShowcase({ categoria, modo = "grid" }) {
           });
         }
 
-        console.log("CATEGORIA:", categoria);
+        console.log("CATEGORIAS:", categoriasSelecionadas);
         console.log("PRODUTOS FILTRADOS:", produtosFiltrados);
 
         setProdutos(produtosFiltrados);

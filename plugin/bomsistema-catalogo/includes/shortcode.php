@@ -50,16 +50,21 @@ function bomsistema_produtos_shortcode($atts)
         'bomsistema_produtos'
     );
 
-    $categoria = sanitize_title($atts['categoria']);
+    $categoria = implode(
+        ',',
+        array_filter(
+            array_map(
+                'sanitize_title',
+                explode(',', $atts['categoria'])
+            )
+        )
+    );
+
     $modo = strtolower(sanitize_text_field($atts['modo']));
 
     if (!in_array($modo, array('grid', 'carousel'), true)) {
         $modo = 'grid';
     }
-
-    /*if (empty($categoria)) {
-        return '';
-    }*/
 
     return sprintf(
         '<div id="bomsistema-catalogo" data-pagina="produtos" data-categoria="%s" data-modo="%s"></div>',
