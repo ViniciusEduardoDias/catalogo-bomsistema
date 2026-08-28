@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import styles from "./ProductShowcase.module.css";
 
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+
 function ProductShowcase({ categoria, modo = "grid" }) {
   const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
@@ -36,6 +38,20 @@ function ProductShowcase({ categoria, modo = "grid" }) {
           produtosFiltrados = data.filter(
             (produto) => produto.destaque === true,
           );
+          produtosFiltrados.sort((a, b) => {
+            const aBomba = a.categorias?.some(
+              (categoriaProduto) => categoriaProduto.slug === "bombas",
+            );
+
+            const bBomba = b.categorias?.some(
+              (categoriaProduto) => categoriaProduto.slug === "bombas",
+            );
+
+            if (aBomba && !bBomba) return -1;
+            if (!aBomba && bBomba) return 1;
+
+            return 0;
+          });
         }
 
         console.log("CATEGORIA:", categoria);
@@ -86,7 +102,7 @@ function ProductShowcase({ categoria, modo = "grid" }) {
             onClick={() => moverCarrossel(-1)}
             aria-label="Produtos anteriores"
           >
-            ←
+            <IoIosArrowBack size="24" />
           </button>
 
           <div ref={carouselRef} className={styles.carousel}>
@@ -103,7 +119,7 @@ function ProductShowcase({ categoria, modo = "grid" }) {
             onClick={() => moverCarrossel(1)}
             aria-label="Próximos produtos"
           >
-            →
+            <IoIosArrowForward size="24" />
           </button>
         </div>
       ) : (

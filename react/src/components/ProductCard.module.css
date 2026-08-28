@@ -5,6 +5,7 @@
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   overflow: hidden;
+  height: 100%;
 
   display: flex;
   flex-direction: column;

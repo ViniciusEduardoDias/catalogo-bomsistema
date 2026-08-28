@@ -57,9 +57,9 @@ function bomsistema_produtos_shortcode($atts)
         $modo = 'grid';
     }
 
-    if (empty($categoria)) {
+    /*if (empty($categoria)) {
         return '';
-    }
+    }*/
 
     return sprintf(
         '<div id="bomsistema-catalogo" data-pagina="produtos" data-categoria="%s" data-modo="%s"></div>',

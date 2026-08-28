@@ -1,4 +1,5 @@
 import style from "./ProductCard.module.css";
+import { IoIosArrowForward } from "react-icons/io";
 
 function ProductCard({ produto }) {
   return (
@@ -14,7 +15,7 @@ function ProductCard({ produto }) {
 
         <span className={style.button}>
           Veja detalhes
-          <span aria-hidden="true">→</span>
+          <IoIosArrowForward size={10} />
         </span>
       </div>
     </a>
