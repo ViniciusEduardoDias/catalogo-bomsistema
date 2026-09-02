@@ -60,13 +60,14 @@ function App() {
         categoriasSelecionadas.includes(categoria.slug),
       ),
     );
+    produtosFiltrados.reverse();
   }
 
   // Se não existe busca nem categoria,
   // mostra somente os produtos em destaque
   if (busca.trim() === "" && categoriasSelecionadas.length === 0) {
     produtosFiltrados = produtos.filter((produto) => produto.destaque === true);
-
+    produtosFiltrados.reverse();
     produtosFiltrados.sort((a, b) => {
       const aBomba = a.categorias?.some(
         (categoria) => categoria.slug === "bombas",

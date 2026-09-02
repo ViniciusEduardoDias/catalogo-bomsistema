@@ -33,6 +33,7 @@ function ProductShowcase({ categoria, modo = "grid" }) {
         const categoriasSelecionadas = categoria
           ? categoria.split(",").map((item) => item.trim())
           : [];
+
         console.log("CATEGORIAS RECEBIDAS:", categoriasSelecionadas);
 
         if (categoriasSelecionadas.length > 0) {
@@ -42,27 +43,36 @@ function ProductShowcase({ categoria, modo = "grid" }) {
             ),
           );
         } else {
-          // Sem categoria = produtos em destaque
+          // Sem categoria = somente produtos em destaque
           produtosFiltrados = data.filter(
             (produto) => produto.destaque === true,
           );
-
-          // Bombas em destaque sempre aparecem primeiro
-          produtosFiltrados.sort((a, b) => {
-            const aBomba = a.categorias?.some(
-              (categoriaProduto) => categoriaProduto.slug === "bombas",
-            );
-
-            const bBomba = b.categorias?.some(
-              (categoriaProduto) => categoriaProduto.slug === "bombas",
-            );
-
-            if (aBomba && !bBomba) return -1;
-            if (!aBomba && bBomba) return 1;
-
-            return 0;
-          });
         }
+
+        // ==========================================
+        // INVERTE A ORDEM DOS PRODUTOS
+        // ==========================================
+
+        produtosFiltrados.reverse();
+
+        // ==========================================
+        // BOMBASEMPRE PRIMEIRO
+        // ==========================================
+
+        produtosFiltrados.sort((a, b) => {
+          const aBomba = a.categorias?.some(
+            (categoriaProduto) => categoriaProduto.slug === "bombas",
+          );
+
+          const bBomba = b.categorias?.some(
+            (categoriaProduto) => categoriaProduto.slug === "bombas",
+          );
+
+          if (aBomba && !bBomba) return -1;
+          if (!aBomba && bBomba) return 1;
+
+          return 0;
+        });
 
         console.log("CATEGORIAS:", categoriasSelecionadas);
         console.log("PRODUTOS FILTRADOS:", produtosFiltrados);
