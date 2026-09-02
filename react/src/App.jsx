@@ -51,6 +51,7 @@ function App() {
     produtosFiltrados = produtosFiltrados.filter((produto) =>
       produto.nome.toLowerCase().includes(termo),
     );
+    produtosFiltrados.reverse();
   }
 
   // Se existem categorias selecionadas, filtra por categoria
