@@ -57,8 +57,6 @@
 
 /* PAGINAÇÃO */
 
-/* PAGINAÇÃO */
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -66,6 +64,12 @@
   gap: 18px;
   margin-top: 40px;
   margin-bottom: 20px;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .pagination button {
@@ -164,5 +168,22 @@
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .pagination {
+    gap: 5px;
+  }
+
+  .pageNumbers {
+    gap: 5px;
+  }
+
+  .pagination button {
+    width: 20px !important;
+    height: 10px !important;
+    padding: 0 !important;
+    margin: 10px !important;
+    border-radius: 0 !important;
+    border: none !important;
   }
 }

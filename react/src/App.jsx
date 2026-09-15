@@ -3,6 +3,7 @@ import ProductCard from "./components/ProductCard";
 import style from "./style.module.css";
 import Sidebar from "./components/Sidebar";
 import SearchBar from "./components/SearchBar";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 function App() {
   const [produtos, setProdutos] = useState([]);
@@ -120,32 +121,55 @@ function App() {
           </section>
         </div>
       </div>
+
       {/* PAGINAÇÃO */}
+
       <div className={style.pagination}>
         <button
           disabled={paginaAtual === 1}
           onClick={() => setPaginaAtual(paginaAtual - 1)}
         >
-          ←
+          <IoIosArrowBack size={10} />
         </button>
 
-        {Array.from({ length: totalPaginas }, (_, index) => index + 1).map(
-          (numeroPagina) => (
-            <button
-              key={numeroPagina}
-              className={paginaAtual === numeroPagina ? style.activePage : ""}
-              onClick={() => setPaginaAtual(numeroPagina)}
-            >
-              {numeroPagina}
-            </button>
-          ),
-        )}
+        <div className={style.pageNumbers}>
+          {Array.from(
+            {
+              length: Math.min(totalPaginas, 5),
+            },
+            (_, index) => {
+              let numeroPagina;
+
+              if (totalPaginas <= 5) {
+                numeroPagina = index + 1;
+              } else if (paginaAtual <= 3) {
+                numeroPagina = index + 1;
+              } else if (paginaAtual >= totalPaginas - 2) {
+                numeroPagina = totalPaginas - 4 + index;
+              } else {
+                numeroPagina = paginaAtual - 2 + index;
+              }
+
+              return (
+                <button
+                  key={numeroPagina}
+                  className={
+                    paginaAtual === numeroPagina ? style.activePage : ""
+                  }
+                  onClick={() => setPaginaAtual(numeroPagina)}
+                >
+                  {numeroPagina}
+                </button>
+              );
+            },
+          )}
+        </div>
 
         <button
           disabled={paginaAtual === totalPaginas}
           onClick={() => setPaginaAtual(paginaAtual + 1)}
         >
-          →
+          <IoIosArrowForward size={10} />
         </button>
       </div>
     </div>
