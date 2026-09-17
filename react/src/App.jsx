@@ -39,6 +39,17 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const elemento = document.getElementById("inicio-produtos");
+
+    if (elemento) {
+      elemento.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [paginaAtual]);
+
   if (carregando) {
     return <p>Carregando produtos...</p>;
   }
@@ -112,7 +123,7 @@ function App() {
           />
 
           {/* PRODUTOS */}
-          <section className={style.products}>
+          <section id="inicio-produtos" className={style.products}>
             <div className={style.grid}>
               {produtosDaPagina.map((produto) => (
                 <ProductCard key={produto.id} produto={produto} />
