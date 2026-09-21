@@ -124,15 +124,18 @@ function App() {
 
           {/* PRODUTOS */}
           <section id="inicio-produtos" className={style.products}>
-            <div className={style.grid}>
-              {produtosDaPagina.map((produto) => (
-                <ProductCard key={produto.id} produto={produto} />
-              ))}
-            </div>
+            {produtosDaPagina.length <= 0 ? (
+              <p>Nenhum produto encontrado.</p>
+            ) : (
+              <div className={style.grid}>
+                {produtosDaPagina.map((produto) => (
+                  <ProductCard key={produto.id} produto={produto} />
+                ))}
+              </div>
+            )}
           </section>
         </div>
       </div>
-
       {/* PAGINAÇÃO */}
 
       <div className={style.pagination}>
