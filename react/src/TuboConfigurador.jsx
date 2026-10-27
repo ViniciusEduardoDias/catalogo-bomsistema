@@ -286,10 +286,16 @@ function TuboConfigurador() {
           <div className={styles.listaHeader}>
             <div>
               <h3>Seus tubos configurados</h3>
-              <p>
-                {listaTubos.length} configuração(ões) · {totalUnidades}{" "}
-                unidade(s)
-              </p>
+              {listaTubos.length === 0 ? (
+                <p>
+                  {listaTubos.length <= 1} configuração · {totalUnidades}{" "}
+                  unidade(s)
+                </p>
+              ) : (
+                <p>
+                  {listaTubos.length} configurações · {totalUnidades} unidade(s)
+                </p>
+              )}
             </div>
           </div>
 
