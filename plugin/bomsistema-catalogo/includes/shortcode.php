@@ -77,3 +77,19 @@ add_shortcode(
     'bomsistema_produtos',
     'bomsistema_produtos_shortcode'
 );
+
+
+
+/* =========================
+   CONFIGURADOR DE TUBOS
+========================= */
+
+function bomsistema_tubo_configurador_shortcode()
+{
+    return '<div id="bomsistema-catalogo" data-pagina="tubo-configurador"></div>';
+}
+
+add_shortcode(
+    'bomsistema_tubo_configurador',
+    'bomsistema_tubo_configurador_shortcode'
+);

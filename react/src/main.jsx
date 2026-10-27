@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Orcamento from "./Orcamento";
 import ProductShowcase from "./components/ProductShowcase";
+import TuboConfigurador from "./TuboConfigurador";
 
 const elemento = document.getElementById("bomsistema-catalogo");
 
@@ -23,6 +24,8 @@ if (elemento) {
         modo={elemento.dataset.modo || "grid"}
       />
     );
+  } else if (pagina === "tubo-configurador") {
+    componente = <TuboConfigurador />;
   }
 
   if (componente) {
