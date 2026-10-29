@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./TuboConfigurador.module.css";
+import { FaTrashAlt } from "react-icons/fa";
 
 function TuboConfigurador() {
   const [material, setMaterial] = useState("PP");
@@ -9,6 +10,16 @@ function TuboConfigurador() {
   const [quantidade, setQuantidade] = useState("1");
   const [listaTubos, setListaTubos] = useState([]);
   const [mensagem, setMensagem] = useState("");
+
+  useEffect(() => {
+    if (!mensagem) return;
+
+    const timer = setTimeout(() => {
+      setMensagem("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [mensagem]);
 
   const gerarCodigo = (mat, esp, config) => {
     const prefixo = "SPF-QF";
@@ -160,104 +171,105 @@ function TuboConfigurador() {
 
   return (
     <section className={styles.configurador}>
+      <div className={styles.header}>
+        <h2>Monte sua configuração</h2>
+        <p>
+          Configure seus tubos, escolha mais opções e confira sua lista antes de
+          enviar tudo para o orçamento.
+        </p>
+      </div>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2>Monte sua configuração</h2>
-          <p>
-            Configure seus tubos, escolha mais opções e confira sua lista antes
-            de enviar tudo para o orçamento.
-          </p>
-        </div>
-
         <form className={styles.form} onSubmit={adicionarNaLista}>
-          <div className={styles.field}>
-            <label htmlFor="material">Material</label>
-            <select
-              id="material"
-              value={material}
-              onChange={(event) => setMaterial(event.target.value)}
-            >
-              <option value="PP">Polipropileno (PP)</option>
-              <option value="INOX">Inox</option>
-            </select>
-          </div>
+          <div className={styles.formSelects}>
+            <div className={styles.field}>
+              <label htmlFor="material">Material</label>
+              <select
+                id="material"
+                value={material}
+                onChange={(event) => setMaterial(event.target.value)}
+              >
+                <option value="PP">Polipropileno (PP)</option>
+                <option value="INOX">Inox</option>
+              </select>
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="diametro">Diâmetro</label>
-            <select
-              id="diametro"
-              value={diametro}
-              onChange={(event) => setDiametro(event.target.value)}
-            >
-              <option value="33.4mm">33,4 mm</option>
-              <option value="25mm">25 mm</option>
-            </select>
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="diametro">Diâmetro</label>
+              <select
+                id="diametro"
+                value={diametro}
+                onChange={(event) => setDiametro(event.target.value)}
+              >
+                <option value="33.4mm">33,4 mm</option>
+                <option value="25mm">25 mm</option>
+              </select>
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="espacamento">Espaçamento</label>
-            <select
-              id="espacamento"
-              value={espacamento}
-              onChange={(event) => setEspacamento(event.target.value)}
-            >
-              <option value="500">500 mm</option>
-              <option value="508">508 mm</option>
-            </select>
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="espacamento">Espaçamento</label>
+              <select
+                id="espacamento"
+                value={espacamento}
+                onChange={(event) => setEspacamento(event.target.value)}
+              >
+                <option value="500">500 mm</option>
+                <option value="508">508 mm</option>
+              </select>
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="customizacao">Configuração</label>
-            <select
-              id="customizacao"
-              value={customizacao}
-              onChange={(event) => setCustomizacao(event.target.value)}
-            >
-              <optgroup label="Barras duplas">
-                <option value="1x1">1x1</option>
-                <option value="1x2">1x2</option>
-                <option value="1x3">1x3</option>
-                <option value="1x4">1x4</option>
-                <option value="1x5">1x5</option>
-                <option value="1x6">1x6</option>
-                <option value="2x2">2x2</option>
-                <option value="2x3">2x3</option>
-                <option value="2x4">2x4</option>
-                <option value="2x5">2x5</option>
-                <option value="2x6">2x6</option>
-                <option value="3x3">3x3</option>
-                <option value="3x4">3x4</option>
-                <option value="3x5">3x5</option>
-                <option value="3x6">3x6</option>
-                <option value="4x4">4x4</option>
-                <option value="4x5">4x5</option>
-                <option value="4x6">4x6</option>
-                <option value="5x5">5x5</option>
-                <option value="5x6">5x6</option>
-                <option value="6x6">6x6</option>
-              </optgroup>
+            <div className={styles.field}>
+              <label htmlFor="customizacao">Configuração</label>
+              <select
+                id="customizacao"
+                value={customizacao}
+                onChange={(event) => setCustomizacao(event.target.value)}
+              >
+                <optgroup label="Barras duplas">
+                  <option value="1x1">1x1</option>
+                  <option value="1x2">1x2</option>
+                  <option value="1x3">1x3</option>
+                  <option value="1x4">1x4</option>
+                  <option value="1x5">1x5</option>
+                  <option value="1x6">1x6</option>
+                  <option value="2x2">2x2</option>
+                  <option value="2x3">2x3</option>
+                  <option value="2x4">2x4</option>
+                  <option value="2x5">2x5</option>
+                  <option value="2x6">2x6</option>
+                  <option value="3x3">3x3</option>
+                  <option value="3x4">3x4</option>
+                  <option value="3x5">3x5</option>
+                  <option value="3x6">3x6</option>
+                  <option value="4x4">4x4</option>
+                  <option value="4x5">4x5</option>
+                  <option value="4x6">4x6</option>
+                  <option value="5x5">5x5</option>
+                  <option value="5x6">5x6</option>
+                  <option value="6x6">6x6</option>
+                </optgroup>
 
-              <optgroup label="Ponteiras">
-                <option value="1">1 ponteira</option>
-                <option value="2">2 ponteiras</option>
-                <option value="3">3 ponteiras</option>
-                <option value="4">4 ponteiras</option>
-                <option value="5">5 ponteiras</option>
-                <option value="6">6 ponteiras</option>
-              </optgroup>
-            </select>
-          </div>
+                <optgroup label="Ponteiras">
+                  <option value="1">Ponteiras - 1 bico</option>
+                  <option value="2">Ponteiras - 2 bicos</option>
+                  <option value="3">Ponteiras - 3 bicos</option>
+                  <option value="4">Ponteiras - 4 bicos</option>
+                  <option value="5">Ponteiras - 5 bicos</option>
+                  <option value="6">Ponteiras - 6 bicos</option>
+                </optgroup>
+              </select>
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="quantidade">Quantidade</label>
-            <input
-              id="quantidade"
-              type="number"
-              min="1"
-              step="1"
-              value={quantidade}
-              onChange={(event) => setQuantidade(event.target.value)}
-            />
+            <div className={styles.field}>
+              <label htmlFor="quantidade">Quantidade</label>
+              <input
+                id="quantidade"
+                type="number"
+                min="1"
+                step="1"
+                value={quantidade}
+                onChange={(event) => setQuantidade(event.target.value)}
+              />
+            </div>
           </div>
           <div>
             <div className={styles.resumo}>
@@ -286,16 +298,12 @@ function TuboConfigurador() {
           <div className={styles.listaHeader}>
             <div>
               <h3>Seus tubos configurados</h3>
-              {listaTubos.length === 0 ? (
-                <p>
-                  {listaTubos.length <= 1} configuração · {totalUnidades}{" "}
-                  unidade(s)
-                </p>
-              ) : (
-                <p>
-                  {listaTubos.length} configurações · {totalUnidades} unidade(s)
-                </p>
-              )}
+              <p>
+                {listaTubos.length}{" "}
+                {listaTubos.length < 2 ? "configuração" : "configurações"}
+                {" · "}
+                {totalUnidades} {totalUnidades < 2 ? "unidade" : "unidades"}
+              </p>
             </div>
           </div>
 
@@ -303,7 +311,7 @@ function TuboConfigurador() {
             <div className={styles.listaVazia}>
               <p>
                 Nenhum tubo adicionado ainda. Configure acima e clique em
-                “Escolher mais”.
+                “Adicionar”.
               </p>
             </div>
           ) : (
@@ -326,12 +334,13 @@ function TuboConfigurador() {
                         tubo.customizacao,
                       )
                         ? `${tubo.customizacao} ponteira(s)`
-                        : `Barras duplas ${tubo.customizacao}`}
+                        : `Barras com TEE ${tubo.customizacao}`}
                     </p>
                   </div>
 
                   <div className={styles.itemAcoes}>
                     <label htmlFor={`qtd-${tubo.id}`}>Quantidade</label>
+
                     <input
                       id={`qtd-${tubo.id}`}
                       type="number"
@@ -342,16 +351,17 @@ function TuboConfigurador() {
                         alterarQuantidade(tubo.id, event.target.value)
                       }
                     />
-
-                    <button
-                      type="button"
-                      className={styles.remover}
-                      onClick={() => removerDaLista(tubo.id)}
-                      aria-label={`Remover item ${indice + 1}`}
-                    >
-                      Remover
-                    </button>
                   </div>
+
+                  <button
+                    type="button"
+                    className={styles.botaoRemover}
+                    onClick={() => removerDaLista(tubo.id)}
+                    aria-label={`Remover item ${indice + 1}`}
+                    title="Remover item"
+                  >
+                    <FaTrashAlt aria-hidden="true" />
+                  </button>
                 </article>
               ))}
             </div>

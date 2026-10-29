@@ -1,13 +1,99 @@
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
 .form {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.formSelects {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Campos */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.field label {
+  color: #173b63;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.field select,
+.field input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #334155;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field select:focus,
+.field input:focus {
+  outline: 2px solid #0096d5;
+  outline-offset: 1px;
+}
+
+/* ========================================
+   RESUMO DA CONFIGURAÇÃO
+======================================== */
+
+.resumo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.resumo strong {
+  color: #173b63;
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   BOTÃO ADICIONAR
+======================================== */
+
 .botaoSecundario {
-  grid-column: 1 / -1;
+  display: block;
   width: 100%;
   min-height: 48px;
   padding: 12px 20px;
+  box-sizing: border-box;
   border: 2px solid #1769aa;
   border-radius: 7px;
   background: #ffffff;
@@ -22,15 +108,29 @@
 }
 
 .botaoSecundario:hover {
-  background: #edf6fc;
+  background-color: #edf6fc;
 }
+
+.botaoSecundario:focus-visible {
+  outline: 2px solid #0096d5;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   MENSAGENS
+======================================== */
 
 .mensagem {
   margin: 18px 0 0;
   color: #1769aa;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.5;
 }
+
+/* ========================================
+   LISTA DE CONFIGURAÇÕES
+======================================== */
 
 .lista {
   margin-top: 36px;
@@ -52,7 +152,10 @@
   margin: 0;
   color: #64748b;
   font-size: 14px;
+  line-height: 1.5;
 }
+
+/* Lista vazia */
 
 .listaVazia {
   padding: 22px;
@@ -68,6 +171,8 @@
   margin: 0;
 }
 
+/* Itens da lista */
+
 .itens {
   display: flex;
   flex-direction: column;
@@ -76,19 +181,22 @@
 }
 
 .item {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-  padding: 20px;
-  border: 1px solid #e2e8f0;
-  border-radius: 9px;
-  background: #ffffff;
+
+  padding: 24px 58px 24px 20px;
+  border: 1px solid #dbe3ed;
+  border-radius: 10px;
+  background: #fff;
+  box-sizing: border-box;
 }
 
 .itemInfo {
-  min-width: 0;
   flex: 1;
+  min-width: 0;
 }
 
 .itemNumero {
@@ -115,13 +223,15 @@
   line-height: 1.5;
 }
 
+/* Ações dos itens */
+
 .itemAcoes {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  width: 120px;
   flex-shrink: 0;
+  width: 80px;
 }
 
 .itemAcoes label {
@@ -132,28 +242,70 @@
 
 .itemAcoes input {
   width: 100%;
-  min-height: 40px;
-  padding: 8px 10px;
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px;
   box-sizing: border-box;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
+  background: #fff;
+  color: #334155;
   font: inherit;
 }
 
-.remover {
-  padding: 4px 0;
-  border: none;
-  background: transparent;
-  color: #b42318;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
+/* Botão de remover */
+.botaoRemover {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+
+  background: transparent !important;
+  color: #64748b !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+
   cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
 }
 
-.remover:hover {
-  text-decoration: underline;
+.botaoRemover svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
 }
+
+.botaoRemover:hover {
+  background: transparent !important;
+  color: #e00000 !important;
+  box-shadow: none !important;
+}
+
+.botaoRemover:focus,
+.botaoRemover:active {
+  background: transparent !important;
+  color: #e00000 !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.botaoRemover:focus-visible {
+  outline: 2px solid #0096d5 !important;
+  outline-offset: 2px;
+}
+
+/* Botões desabilitados */
 
 .botao:disabled {
   background: #94a3b8;
@@ -161,14 +313,57 @@
   cursor: not-allowed;
 }
 
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+  .formSelects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .item {
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   CELULARES
+======================================== */
+
 @media (max-width: 600px) {
+  .form {
+    gap: 16px;
+  }
+
+  .formSelects {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .field select,
+  .field input {
+    min-height: 46px;
+  }
+
   .botaoSecundario {
-    grid-column: 1;
+    width: 100%;
+  }
+
+  .resumo {
+    gap: 6px 8px;
+    padding: 12px;
+    font-size: 13px;
   }
 
   .lista {
     margin-top: 28px;
     padding-top: 22px;
+  }
+
+  .listaVazia {
+    padding: 16px;
   }
 
   .item {
@@ -181,8 +376,8 @@
     display: grid;
     grid-template-columns: auto minmax(70px, 100px) auto;
     align-items: center;
-    width: 100%;
     gap: 10px;
+    width: 100%;
   }
 
   .itemAcoes input {

@@ -85,8 +85,7 @@ function Orcamento() {
     const produtosTexto = carrinho
       .map((produto) => {
         const quantidade = produto.quantidade || 1;
-
-        return `• ${produto.nome} — Qtd.: ${quantidade}`;
+        return `• ${produto.nome} ${produto.codigo ? `— Código: ${produto.codigo}` : ""} — Qtd.: ${quantidade}`;
       })
       .join("\n");
 
