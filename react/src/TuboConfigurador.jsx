@@ -12,7 +12,7 @@ function TuboConfigurador() {
   const [mensagem, setMensagem] = useState("");
 
   useEffect(() => {
-    if (!mensagem) return;
+    if (mensagem === "") return;
 
     const timer = setTimeout(() => {
       setMensagem("");
