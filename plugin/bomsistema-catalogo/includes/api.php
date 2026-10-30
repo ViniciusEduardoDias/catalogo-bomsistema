@@ -61,6 +61,7 @@ function bomsistema_obter_produtos()
             'id'         => $produto->get_id(),
             'nome'       => $produto->get_name(),
             'slug'       => $produto->get_slug(),
+            'sku' => $produto->get_sku(),
             'url'        => $produto->get_permalink(),
             'imagem'     => wp_get_attachment_image_url(
                 $produto->get_image_id(),

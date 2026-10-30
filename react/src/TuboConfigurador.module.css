@@ -173,6 +173,10 @@
   margin: 0;
 }
 
+.botao {
+  margin-top: 20px;
+}
+
 /* Itens da lista */
 
 .itens {

@@ -373,7 +373,7 @@ function TuboConfigurador() {
             onClick={adicionarAoOrcamento}
             disabled={listaTubos.length === 0}
           >
-            Adicionar lista ao orçamento ({listaTubos.length})
+            Adicionar ao orçamento carrinho! ({listaTubos.length})
           </button>
         </div>
       </div>
