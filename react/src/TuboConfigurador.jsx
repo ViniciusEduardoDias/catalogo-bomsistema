@@ -10,6 +10,8 @@ function TuboConfigurador() {
   const [quantidade, setQuantidade] = useState("1");
   const [listaTubos, setListaTubos] = useState([]);
   const [mensagem, setMensagem] = useState("");
+  const IMAGEM_TUBO =
+    "https://dev.bomsistema.com.br/wp-content/uploads/2026/09/MONTAGEM-5B-DUO-INOX-SEM-CAPA-Copia.png";
 
   useEffect(() => {
     if (mensagem === "") return;
@@ -142,6 +144,7 @@ function TuboConfigurador() {
       } else {
         carrinhoAtualizado.push({
           ...tubo,
+          imagem: IMAGEM_TUBO,
           id: `tubo-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         });
       }

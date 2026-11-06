@@ -97,14 +97,14 @@
 ========================================= */
 
 .produtoImagem {
-  flex: 0 0 113px;
+  display: flex;
   padding: 5px;
   width: 113px;
   height: 113px;
   border-radius: 0 !important;
-
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-
   background: #eeeeee;
 }
 
